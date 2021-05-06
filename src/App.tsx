@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import 'semantic-ui-css/semantic.min.css'
+import { Menu } from 'semantic-ui-react'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+
+import { Level1 } from './pages/level1'
+import { Level2 } from './pages/level2'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <div className='App'>
+        <Menu>
+          <Link to='/level1'>
+            <Menu.Item name='level1'>Level 1</Menu.Item>
+          </Link>
+          <Link to='/level2'>
+            <Menu.Item name='level2'>Level 2</Menu.Item>
+          </Link>
+        </Menu>
+      </div>
+
+      <Switch>
+        <Route exact path='/' component={Level1} />
+        <Route exact path='/level1' component={Level1} />
+        <Route exact path='/level2' component={Level2} />
+      </Switch>
+    </Router>
+  )
 }
 
-export default App;
+export default App
